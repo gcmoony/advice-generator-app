@@ -4,11 +4,15 @@ async function getAdvice() {
     fetch(url)
     .then((res) => res.json())
     .then((data) => {
-        document.getElementById("advice-id").innerHTML = data.slip.id;
-        document.getElementById("advice-description").innerHTML = data.slip.advice;
+        let adviceID = document.getElementById("advice-id");
+        adviceID.innerHTML = data.slip.id;
+        let adviceDesc = document.getElementById("advice-description");
+        adviceDesc.innerHTML = data.slip.advice;
+        adviceID.classList.remove("loading");
+        adviceDesc.classList.remove("loading");
     });
 }
 
-document.getElementById("get-advice-btn").addEventListener("click", getAdvice)
-
 getAdvice();
+
+document.getElementById("get-advice-btn").addEventListener("click", getAdvice)
